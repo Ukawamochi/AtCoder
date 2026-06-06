@@ -8,26 +8,18 @@ fn main(){
         mut cv: [(usize, usize); n],
     }
     cv.sort_by(|a, b| a.1.partial_cmp(&(b.1)).unwrap());
-    let mut select =  Vec::new();
-    select.push(0);
+    let mut select =  vec![0; n + 1];
     let mut result = 0;
     
     let mut index = n - 1;
-    for _i in 0..k{
-        loop{
-            let mut flag = 0;
-            for j in select.clone(){
-                if j == cv[index].0{
-                    flag = 1;
-                }
-            }
-            
-            if flag == 1{
+    for _i in 0..m{
+        loop{            
+            if select[cv[index].0] == 1{
                 if index != 0{
                     index -= 1;
                 }
             }else{
-                select.push(cv[index].0);
+                select[cv[index].0] = 1;
                 result += cv[index].1;
                 cv[index].1 = 0;
                 if index != 0{
@@ -35,9 +27,6 @@ fn main(){
                 }
                 break;
             }
-        }
-        if select.len() - 1 == m {
-            break;
         }
     }
     
