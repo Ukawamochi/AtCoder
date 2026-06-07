@@ -17,16 +17,11 @@ fn main(){
     let cum = build_cum(&grid);
     
     //長方形の長さを決める
-    for height in 1..=h{
-        for width in 1..=w{
-            //左上を決める
-            //eprintln!("SIZE OF heiht:{height}, width:{width}");
-            if height * width < k{
-                continue
-            }
-            for start_h in 0..=(h - height){
-                for start_w in 0..=(w - width){
-                    if k == count_sum(&cum, start_h+1, start_w+1, start_h + height, start_w + width) {
+    for h1 in 0..h{
+        for w1 in 0..w{
+            for h2 in h1..h{
+                for w2 in w1..w{
+                    if k == count_sum(&cum, h1 + 1, w1 + 1, h2 + 1, w2 + 1) {
                         result += 1;
                     }
                 }
