@@ -6,22 +6,26 @@ match: Lines
 cases:
   - name: sample1
     in: |
+      5
+      ATCABC
       1
-    out: |
-      0
-  - name: sample2
-    in: |
+      ABABC
+      1
+      XABCYZ
+      1
+      ZZZZZ
+      1
+      ABCBABCAEFCABAABC
       2
     out: |
-      0
-  - name: sample3
-    in: |
-      11
-    out: |
-      2026
+      1
+      -1
+      6
+      3
+      3
 
 extend:
   - type: Text
-    path: "./a"
+    path: "./f"
     in: /in/*.txt
     out: /out/*.txt

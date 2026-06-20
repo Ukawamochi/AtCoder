@@ -6,14 +6,23 @@ match: Lines
 cases:
   - name: sample1
     in: |
-      365 4
+      abc462
     out: |
-      3
+      462
   - name: sample2
     in: |
-      10 5
+      codequeen
+    out: >
+  - name: sample3
+    in: |
+      31415
     out: |
-      2
+      31415
+  - name: sample4
+    in: |
+      10plus2is12
+    out: |
+      10212
 
 extend:
   - type: Text
