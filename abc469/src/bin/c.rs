@@ -6,45 +6,21 @@ fn main() {
         n: usize,
         s: Chars,
     }
-    let mut result = vec![0; n];
-    let mut sum = vec![0; n];
+    let mut pos : Vec<usize> = Vec::new();
     
-    let mut start = 0;
-    let mut count = 0;
-    for k in 0..n{
-        if s[k] == 'o' && count <= n{
-            count += 1;
-        }
-        sum[k] = count + k;
-        if sum[k] >= n {
-            sum[k] = n - 1;
-        }
-    }
-    eprintln!("o sum + index array");
     for i in 0..n{
-        eprintln!("{}",sum[i]);
-    }
-    
-    for k in 0..n{
-        if s[k] == 'x'{
-            for i in start..=k{
-                eprintln!("result[{i}] = {}",k + 1);
-                result[i] = k + 1;
-            }
-            start = k + 1;
-        }else if k == (n - 1){
-            for i in start..=k{
-                eprintln!("result[{i}] = {}",k + 1);
-                result[i] = k + 1;
-            }
-            start = k;
+        if s[i] == 'x'{
+            pos.push(i);
         }
     }
-    
-    
-    for i in sum{
-        eprintln!("answer = result[{}] = {}", i, result[i]);
-        println!("{}",result[i]);
-        
+    let ksum = pos.len();
+    for k in 1..=n{
+        if k > ksum{
+            eprintln!("k = {k} : ans= {n}");
+            println!("{}",n);
+        }else{
+            eprintln!("k = {k} : ans= {}",pos[k-1]);
+            println!("{}",pos[k - 1] + 1);
+        }
     }
 }
